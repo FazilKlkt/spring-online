@@ -17,6 +17,6 @@ public class GreetingController {
     
     @GetMapping("/test")    
     public String sayTest() {
-        return "Test is working\n";
+        return "Test is working NEW!\n";
     }
 }
