@@ -26,18 +26,6 @@ public class GreetingController {
                 );
     }
     
-    @GetMapping("/wad1")
-    public Object returnObj(){
-        return Map.of(
-                "message","hello bro",
-                "status",true,
-                "data",Map.of(
-                    "id",1,
-                    "name","aman"
-                    )
-                );
-    }
-
     @GetMapping("/test")    
     public String sayTest() {
         return "Test is working\n";
