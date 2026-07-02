@@ -27,7 +27,7 @@ public class GreetingController {
     }
     
     @GetMapping("/wad1")
-    public Object returnObjj(){
+    public Object returnObj(){
         return Map.of(
                 "message","hello bro",
                 "status",true,
@@ -36,5 +36,10 @@ public class GreetingController {
                     "name","aman"
                     )
                 );
+    }
+
+    @GetMapping("/test")    
+    public String sayTest() {
+        return "Test is working\n";
     }
 }
