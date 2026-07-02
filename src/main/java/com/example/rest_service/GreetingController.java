@@ -14,17 +14,6 @@ public class GreetingController {
     public String sayHello() {
         return "Hello, Spring Boot!\n";
     }
-    @GetMapping("/wadu")
-    public Object returnObj(){
-        return Map.of(
-                "message","hello bro",
-                "status",true,
-                "data",Map.of(
-                    "id",1,
-                    "name","aman"
-                    )
-                );
-    }
     
     @GetMapping("/test")    
     public String sayTest() {
