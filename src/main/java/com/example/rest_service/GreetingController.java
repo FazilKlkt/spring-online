@@ -1,8 +1,11 @@
 package com.example.rest_service;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
 
+import java.time.Instant;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 
@@ -11,21 +14,29 @@ import java.util.Map;
 @RequestMapping("/api")
 public class GreetingController {
 
-    @GetMapping("/hello")    
-    public String sayHello() {
-        log.info("/hello endpoint called");
-        return "Hello, Spring Boot!\n";
-    }
-    
     @GetMapping("/test")    
     public String sayTest(){
-        log.info("/test endpoint called");
-        return "Test is working NEW!\n";
+        return "Test is working!\n";
     }
 
-    @PostMapping("/same")
-    public Map<String,Object> returnSameBody(@RequestBody Map<String,Object> req){
-        log.info("/same endpoint called");
-        return req;
+    @RequestMapping("/echo")
+    public Map<String, Object> echo(@RequestBody(required = false) Map<String, Object> body,
+                                    @RequestParam Map<String, String> queryParams,
+                                    @RequestHeader Map<String, String> headers,
+                                    HttpServletRequest request) {
+
+        log.info("=== ECHO Request ===");
+        log.info("Method: {}", request.getMethod());
+        log.info("URI: {}", request.getRequestURI());
+
+        Map<String, Object> response = new LinkedHashMap<>();
+        response.put("method", request.getMethod());
+        response.put("path", request.getRequestURI());
+        response.put("queryParams", queryParams);
+        response.put("headers", headers);
+        response.put("body", body != null ? body : "No body");
+        response.put("timestamp", Instant.now().toString());
+
+        return response;
     }
 }
