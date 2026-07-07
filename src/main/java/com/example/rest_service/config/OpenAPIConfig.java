@@ -31,7 +31,7 @@ public class OpenAPIConfig {
                                 .url("http://localhost:8080")
                                 .description("Development Server"),
                         new Server()
-                                .url("https://fazilhusen.com")
+                                .url("https://api.fazilhusen.com")
                                 .description("Production Server")
                 ));
     }
